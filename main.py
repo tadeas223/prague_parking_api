@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from data.address import Address
 import external_apis.prague_api as prague_api
 import external_apis.geograpify as geoapify
 
@@ -29,7 +30,7 @@ def post_parking():
         position = (data["position"]["lat"], data["position"]["lon"])
 
     if "address" in data:
-        required_position_keys = ["postal_code", "street", "house_number"]
+        required_address_keys = ["postal_code", "street", "house_number"]
         req_address = data["address"]
 
         if not all(key in req_address for key in required_address_keys):
