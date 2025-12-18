@@ -4,7 +4,7 @@ import external_apis.geograpify as geoapify
 
 app = Flask(__name__)
 
-@app.route("/parking", methods=["POST"])
+@app.route("/parking", methods=["GET"])
 def post_parking():
     data = request.get_json()
 
