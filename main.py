@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route("/parking", methods=["POST"])
 def post_parking():
+    print("aaaaa")
     data = request.get_json()
 
     if ("position"     not in data \

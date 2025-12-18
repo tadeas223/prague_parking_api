@@ -43,9 +43,13 @@ def parse_parking_data(json):
         capacity = space_propertions["capacity"]
         position = (space_propertions["centroid"]["coordinates"][0],space_propertions["centroid"]["coordinates"][1])
 
-        postal_code = space_propertions["address"]["postal_code"]
-        street = space_propertions["address"]["street_address"]
-        house_number = space_propertions["address"]["house_number"]
+        address_data = space_propertions.get("address") or None
+        if(address_data == None):
+            continue
+
+        postal_code = address_data.get("postal_code")
+        street = address_data.get("street_address")
+        house_number = address_data.get("house_number")
 
         address = Address(postal_code, street, house_number)
         parkings.append(Parking(capacity, position, address))
